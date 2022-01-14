@@ -1,0 +1,34 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm)">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" id="name" class="form-control" formControlName="name">
+    <p *ngIf="nameErr.errors?.['required'] && !nameErr.pristine" class="err-message">Name is required</p>
+    <p *ngIf="nameErr.errors?.['minlength']" class="err-message">Name has to be 3 characters long.</p>
+  </div>
+  <div>
+    <label for="description">Description</label>
+    <input type="text" id="description" class="form-control" formControlName="description">
+    <p *ngIf="descriptionErr.errors?.['required'] && !descriptionErr.pristine" class="err-message">Description is required</p>
+    <p *ngIf="descriptionErr.errors?.['maxlength']" class="err-message">The maximum length of a description is 255 characters</p>
+  </div>
+  <div>
+    <label for="price">Price</label>
+    <input type="text" id="price" class="form-control" formControlName="price">
+    <p *ngIf="priceErr.errors?.['required'] && !priceErr.pristine" class="err-message">Price is required</p>
+    <p *ngIf="priceErr.errors?.['min']" class="err-message">Price can't be negative</p>
+  </div>
+  <div>
+    <label for="currency">Currency</label>
+    <input type="text" id="currency" class="form-control" formControlName="currency">
+    <p *ngIf="currencyErr.errors?.['required'] && !currencyErr.pristine" class="err-message">Currency is required</p>
+  </div>
+  <div>
+    <label for="amountStock">Amount of stock</label>
+    <input type="text" id="amountStock" class="form-control" formControlName="amountStock">
+    <p *ngIf="amountStockErr.errors?.['required'] && !amountStockErr.pristine" class="err-message">Amount of stock is required</p>
+    <p *ngIf="amountStockErr.errors?.['min']" class="err-message">Amount of stock can't be negative</p>
+  </div>
+
+  <input type="submit" value="Create" [disabled]="!checkoutForm.valid">
+
+</form>

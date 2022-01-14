@@ -28,6 +28,13 @@ export class ItemService {
       return this.httpClient.get<getItem[]>(`${this.url}/?${term}`);
   }
 
+  getItem(id: string): Observable<getItem> {
+    return this.httpClient.get<getItem>(`${this.url}/${id}`).pipe(
+      tap((newItem:getItem )=> console.log(`Item whit id: ${id} is ${newItem}`)),
+      catchError(this.handleError<getItem>('get Item'))
+    );
+  }
+
   addItem(item: getItem): Observable<number> {
     return this.httpClient.post<number>(this.url, item, this.httpOptions)
       .pipe(
@@ -36,12 +43,10 @@ export class ItemService {
       );
   }
 
-  getItem(id: string): Observable<getItem> {
-    return this.httpClient.get<getItem>(`${this.url}/${id}`).pipe(
-      tap((newItem:getItem )=> console.log(`Item whit id: ${id} is ${newItem}`)),
-      catchError(this.handleError<getItem>('get Item'))
-    );
+  editItem(id: string,item: getItem) {
+    return this.httpClient.put<getItem>(`${this.url}/${id}`, item);
   }
+
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -56,5 +61,6 @@ export class ItemService {
       return of(result as T);
     };
   }
+
 
 }

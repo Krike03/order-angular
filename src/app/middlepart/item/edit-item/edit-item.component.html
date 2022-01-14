@@ -1,0 +1,4 @@
+<H3 *ngIf="item$">edit {{item$.name}}</H3>
+<div *ngIf="item$">
+<app-form  [item]="item$" (formOnSubmit)="onSubmit($event)"></app-form>
+</div>

@@ -1,2 +1,11 @@
 <p>detail works!</p>
-{{id}}
+<a routerLink="../edit/{{id}}">edit without state</a>                      <br/>
+<a routerLink="../edit/{{id}}" [state]="{data: item$}">edit with state</a>
+  <div *ngIf="item$">
+    <p>id: {{item$.id}}</p>
+    <p>name: {{item$.name}}</p>
+    <p>description: {{item$.description}}</p>
+    <p>price: {{item$.price}}{{item$.currency}}</p>
+    <p>amount of stock: {{item$.amountStock}}</p>
+
+  </div>

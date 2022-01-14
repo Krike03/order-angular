@@ -9,7 +9,7 @@
 
   <ul class="search-result">
     <li *ngFor="let item of searchItems$ | async">
-      <a routerLink="/detail/{{item.id}}">
+      <a routerLink="{{item.id}}">
         {{item.name}}
       </a>
     </li>
@@ -18,7 +18,9 @@
 
 <ul class="card-list" *ngFor="let item of items">
   <li class="card">
-    <div class="card-title">{{item.name}}</div>
+    <div class="card-title">
+      <a routerLink="{{item.id}}"> {{item.name}}</a>
+    </div>
     <img class="card-image" src="../../assets/img/item-image.png" alt="item image">
     <div class="card-footer">
       <div>Price: {{item.price}}{{item.currency}}</div>
