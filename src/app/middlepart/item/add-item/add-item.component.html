@@ -1,10 +1,10 @@
 <h2>Create Item</h2>
-<div *ngIf="item">
-  <p>name : {{item.name}}</p>
-  <p>Description: {{item.description}}</p>
-  <p>price : {{item.price}}{{item.currency}}</p>
-  <p>amount of stock: {{item.amountStock}}</p>
-</div>
+<!--<div *ngIf="item">-->
+<!--  <p>name : {{item.name}}</p>-->
+<!--  <p>Description: {{item.description}}</p>-->
+<!--  <p>price : {{item.price}}{{item.currency}}</p>-->
+<!--  <p>amount of stock: {{item.amountStock}}</p>-->
+<!--</div>-->
 
 <app-form [item]="item" (formOnSubmit)="onSubmit($event)" ></app-form>
 

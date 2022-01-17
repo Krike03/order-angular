@@ -6,7 +6,7 @@
     <p *ngIf="nameErr.errors?.['minlength']" class="err-message">Name has to be 3 characters long.</p>
   </div>
   <div>
-    <label for="description">Description</label>
+    <label for="description">Description</label> <div>{{description | length:255}}</div>
     <input type="text" id="description" class="form-control" formControlName="description">
     <p *ngIf="descriptionErr.errors?.['required'] && !descriptionErr.pristine" class="err-message">Description is required</p>
     <p *ngIf="descriptionErr.errors?.['maxlength']" class="err-message">The maximum length of a description is 255 characters</p>

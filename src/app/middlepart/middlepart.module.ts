@@ -7,7 +7,8 @@ import {AddItemComponent} from './item/add-item/add-item.component';
 import {DetailComponent} from './item/detail/detail.component';
 import {CustomerModule} from "./customer/customer.module";
 import {FormComponent} from './item/form/form.component';
-import { EditItemComponent } from './item/edit-item/edit-item.component';
+import {EditItemComponent} from './item/edit-item/edit-item.component';
+import {LengthPipe} from "./item/pipes/length.pipe";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { EditItemComponent } from './item/edit-item/edit-item.component';
     AddItemComponent,
     DetailComponent,
     FormComponent,
-    EditItemComponent
+    EditItemComponent,
+    LengthPipe
   ],
   exports: [
     OverviewComponent
@@ -25,7 +27,7 @@ import { EditItemComponent } from './item/edit-item/edit-item.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    CustomerModule
+    CustomerModule,
   ]
 })
 export class MiddlepartModule {

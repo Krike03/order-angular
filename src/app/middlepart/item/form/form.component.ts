@@ -11,8 +11,8 @@ export class FormComponent implements OnInit , OnChanges{
   @Input() item!:getItem;
   @Output() formOnSubmit = new EventEmitter<getItem>();
 
-  onSubmit(checkoutForm: FormGroup) {
-    this.formOnSubmit.emit(checkoutForm.value);
+  onSubmit(form: FormGroup) {
+    this.formOnSubmit.emit(form.value);
   }
 
   //add input.ng-dirty.ng-invalid to the css
@@ -24,14 +24,19 @@ export class FormComponent implements OnInit , OnChanges{
     amountStock: ['', [Validators.required, Validators.min(0)]],
   });
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit(): void {
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     // changes.prop contains the old and the new value...
-    console.log(`edit item ${this.item}`)
+    console.log(`edit item ${this.item}`);
     this.checkoutForm.patchValue(this.item);
   }
-  ngOnInit(): void {
+
+  get description():string{
+    return this.checkoutForm.value.description;
   }
 
   get nameErr(): FormControl {
